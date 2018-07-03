@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Make site responsive on mobile/tablet -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>producTIV</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="/stylesheets/main.css">
+    </head>
+    <body>
+    <!--Navbar-->
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+
+        <!-- Navbar brand -->
+            <a class="navbar-brand bold " href='/'>producTIV</a>
+
+        <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseNav" aria-controls="collapseNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id='collapseNav'>
+
+                <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item <%= typeof page !== 'undefined' && page === 'tasks' ? 'active' : '' %>">
+                    <a class="nav-link bold" href='/tasks'>Tasks</a>
+                </li>
+                <li class='nav-item <%= typeof page !== 'undefined' && page === 'profile' ? 'active' : '' %>'>
+                    <a class='nav-link bold' href='/profile'>Profile</a>
+                </li>
+            </ul>
+            <!-- Links -->
+                <ul class='navbar-nav ml-auto'>
+                    <% if(!currentUser){ %>
+                        <li class='nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>'>
+                            <a class='nav-link bold' href='/login'>Login</a>
+                        </li>
+                        <li class='nav-item <%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>'>
+                            <a class='nav-link bold' href='/register'>Sign Up</a>
+                        </li>
+                    <% } else { %>
+                        <li class='nav-item'>
+                            <a class='nav-link bold' href='/profile'>Signed In As <%= currentUser.username %></a>
+                        </li>
+                        <li class='nav-item'>
+                            <a class='nav-link bold' href='/logout'>Logout</a>
+                        </li>
+                    <% } %>
+                </ul>
+        </div>
+    <!-- Collapsible content -->
+
+        </nav>
+<!--/.Navbar-->    
