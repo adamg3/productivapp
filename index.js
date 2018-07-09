@@ -5,11 +5,11 @@ var express = require('express'),
     mongoose = require('mongoose'),
     User = require('./models/user'),
     Task = require('./models/task'),
-    flash = require('connect-flash'),
     passport = require('passport'),
     LocalStrategy = require('passport-local')
 
-
+var methodOverride = require("method-override");
+var flash = require("connect-flash");
 var taskRoutes = require('./routes/tasks');
 var userRoutes = require('./routes/users');
 var indexRoutes = require('./routes/index');
