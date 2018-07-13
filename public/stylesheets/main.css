@@ -101,9 +101,54 @@ body {
       margin-top: -78px;
       float: right;
     }
+    
+    #performance {
+        width: 768px;
+    }
+    /*#currentPoints {*/
+    /*    margin-left: -10px;*/
+    /*}*/
 }
 
 
 .done {
 	text-decoration: line-through;
+}
+
+.jumbotron {
+    margin-top: 30px;
+    background-color: #343a40!important;
+}
+
+.profileHeadingLeft {
+    float: left;
+}
+
+.profileHeadingRight {
+    float: right;
+}
+
+.landingFeature {
+    height: 200px;
+    /*width: 35%;*/
+    border-radius: 10px;
+    border: 2px solid #343a40;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    background-color: #343a40;
+    
+}
+
+#performance {
+    border: 2px solid #343a40;
+    border-radius: 10px;
+    width: 90%;
+}
+
+#currentPoints {
+    float:right;
+    font-size: 100px;
+    line-height: 40px;
+    margin-top: -20px;
+    /*margin-left: -150px;*/
 }

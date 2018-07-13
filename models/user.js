@@ -16,5 +16,4 @@ module.exports = mongoose.model('User', UserSchema);
 
 // username
 // password
-// email
 // points

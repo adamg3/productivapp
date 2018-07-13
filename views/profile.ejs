@@ -1,7 +1,28 @@
 <% include ./partials/header %>
 
-<h4 class='white'><%= currentUser.username %></h4>
-<h4 class='white'><%= currentUser._id %></h4>
-<h4 class='white'><%= currentUser.points %></h4>
+<div class="container">
+    <div class="jumbotron">
+    <div class="row">
+        <div class="col-6 helvetica profileHeadingLeft">
+            <h2 class="white"><%=currentUser.username%></h2>
+            <h3 class="white">Track Your Performance Below</h3>
+        </div>
+        <div class="col-6 helvetica profileHeadingRight white">
+            <div class="col">
+                <h3>Total Points:</h3>
+            </div>
+            <div class="col">
+                <p><span id="currentPoints"><%=currentUser.points%></span></p>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+
+<div class="container middle" id="performance">
+    <h4 class="white">This is where chartjs graphs go</h4>
+</div>
+
 
 <% include ./partials/footer %>

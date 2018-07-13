@@ -20,7 +20,7 @@ var url = process.env.DATABASEURL || 'mongodb://localhost:27017/producTIV';
 mongoose.set('debug', true);
 mongoose.Promise = Promise;
 
-mongoose.connect(url)
+mongoose.connect(url);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
