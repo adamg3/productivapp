@@ -22,10 +22,3 @@ var taskSchema = new mongoose.Schema({
 var Task = mongoose.model('Task', taskSchema);
 
 module.exports = Task;
-
-//name
-//completionDate
-//creationDate
-//importance
-//completed
-//createdUser

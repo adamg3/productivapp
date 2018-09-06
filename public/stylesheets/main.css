@@ -38,10 +38,6 @@ h1 {
     padding-top: 75px;
 }
 
-.nav li a:hover {
-    
-}
-
 
 .inputForm {
     width: 40%; 
@@ -84,8 +80,18 @@ body {
 	list-style: none ;
 	line-height: 60px;
 	font-size: 20px;
-	padding: 0 20px;
+	padding: 20px;
 	transition: all .3s ease;
+	/*border: 1px solid white;*/
+	border-radius: 20px;
+}
+
+form {
+    display: inline;
+}
+
+.task h5 {
+    margin-right: -50px;
 }
 
 .task:hover {
@@ -112,7 +118,7 @@ body {
 
 
 .done {
-	text-decoration: line-through;
+	font-weight: bold;
 }
 
 .jumbotron {
@@ -136,8 +142,17 @@ body {
     margin-left: 20px;
     margin-bottom: 20px;
     background-color: #343a40;
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family:Verdana;
+    font-weight: bold;
 }
+
+/*.landingFeature h4 {*/
+/*    vertical-align: middle;*/
+/*    line-height: normal;*/
+/*}*/
 
 #performance {
     border: 2px solid #343a40;
@@ -151,4 +166,19 @@ body {
     line-height: 40px;
     margin-top: -20px;
     /*margin-left: -150px;*/
+}
+
+#currentTasks {
+    float:right;
+    font-size: 100px;
+    line-height: 40px;
+    margin-top: 20px;
+    /*padding-bottom: -10px;*/
+}
+
+#achievements {
+    border: 2px solid #343a40;
+    margin-top: 10px;
+    border-radius: 10px;
+    width: 90%;
 }

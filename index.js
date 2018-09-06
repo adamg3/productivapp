@@ -11,7 +11,6 @@ var express = require('express'),
 var methodOverride = require("method-override");
 var flash = require("connect-flash");
 var taskRoutes = require('./routes/tasks');
-var userRoutes = require('./routes/users');
 var indexRoutes = require('./routes/index');
 
 
@@ -26,6 +25,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(flash());
+app.use(methodOverride("_method"));
 
 app.use(express.static(__dirname + '/views'));
 app.use(express.static(__dirname + '/public'));

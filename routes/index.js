@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var passport = require('passport');
 var User = require('../models/user');
+var Task = require('../models/task');
 var middleware = require('../middleware')
 
 //Home
@@ -61,6 +62,13 @@ router.get('/logout', function(req,res){
 
 //show profile page
 router.get('/profile', middleware.isLoggedIn, function(req,res){
-    res.render('profile', {page: 'profile'});
-})
+    Task.find({createdUsername : req.user.username}, function(err, allTasks){
+    if(err) {
+        res.redirect('/landing')
+    } else {
+        res.render('profile', {page: 'profile', tasks : allTasks});
+    };
+});
+});
+
 module.exports = router;

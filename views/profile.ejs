@@ -1,18 +1,51 @@
 <% include ./partials/header %>
+<%
+    var completedTasks = 0;
+    var totalPoints = 0;
+    var totalTasks = tasks.length;
+    var availablePoints = 0;
+    tasks.forEach(function(task){
+        if (task.completed == true) {
+            completedTasks ++;
+            totalPoints = totalPoints + task.importance;
+        }
+        availablePoints = availablePoints + task.importance;
+        });
+%>
+
+    
+    <script>
+    window.onload = function(){
+        renderDoughnut(<%=completedTasks%>, (<%=totalTasks%> - <%=completedTasks%>))
+
+    }
+
+    </script>
 
 <div class="container">
     <div class="jumbotron">
     <div class="row">
         <div class="col-6 helvetica profileHeadingLeft">
-            <h2 class="white"><%=currentUser.username%></h2>
+            <h2 class="white"><%=currentUser.username.toUpperCase()%></h2>
             <h3 class="white">Track Your Performance Below</h3>
         </div>
         <div class="col-6 helvetica profileHeadingRight white">
+            <div class="row ">
             <div class="col">
                 <h3>Total Points:</h3>
             </div>
             <div class="col">
-                <p><span id="currentPoints"><%=currentUser.points%></span></p>
+                <p><span id="currentPoints"><%=totalPoints%></span></p>
+            </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <h3>Total Tasks Completed:</h3>
+                </div>
+                <div class="col">
+                    <p><span id="currentTasks"><%=completedTasks%></span></p>
+                </div>
             </div>
         </div>
     </div>
@@ -21,8 +54,14 @@
 
 
 <div class="container middle" id="performance">
-    <h4 class="white">This is where chartjs graphs go</h4>
+    <h4 class="white">Performance Graphs</h4>
+    <div class="chart">
+        <canvas id="tasksDonutChart"></canvas>
+    </div>
 </div>
 
+<div class="container middle" id="achievements">
+    <h4 class="white">This is where achievements list goes</h4>
+</div>
 
 <% include ./partials/footer %>

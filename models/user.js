@@ -7,7 +7,12 @@ var UserSchema = new mongoose.Schema({
     points : {
         type: Number,
         default: 0
-    }
+    },
+    tasksCompleted : {
+        type: Number,
+        default: 0
+    },
+    achievements: [ ]
 });
 
 UserSchema.plugin(passportLocalMongoose);
@@ -17,3 +22,4 @@ module.exports = mongoose.model('User', UserSchema);
 // username
 // password
 // points
+// taskscompleted

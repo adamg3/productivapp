@@ -18,6 +18,7 @@ router.get('/', middleware.isLoggedIn, function(req,res){
             console.log(err);
         } else {
             res.render('tasks/tasks', {tasks: allTasks, page: 'tasks'});
+
         }
     })
 });
@@ -53,44 +54,87 @@ router.post('/', function(req,res){
     })
 })
 
-//delete tasks
-// router.delete('/:id', function(req,res){
-//     Task.findByIdAndRemove(req.params.id, function(err){
-//         if(err) {
-//             res.redirect('/tasks')
-//         } else {
-//             res.redirect('/tasks');
-//         }
-//     })
-// })
+// delete tasks
+router.delete('/:id', function(req,res){
+    Task.findByIdAndRemove(req.params.id, function(err){
+        if(err) {
+            res.redirect('/tasks')
+        } else {
+            res.redirect('/tasks');
+            console.log('deleted');
+        }
+    });
+});
 
-// //edit task route
-// router.get('/:id/edit', function(req,res){
-//     Task.findById(req.params.id, function(err, foundTask){
-//         if(err){
-//             req.flash('error', 'task not found');
-//         } else {
-//             res.render('tasks/edit', { task: foundTask})
-//         }
-//     });
-// })
+//edit task route
+router.get('/:id/edit', function(req,res){
+    Task.findById(req.params.id, function(err, foundTask){
+        if(err){
+            req.flash('error', 'task not found');
+        } else {
+            res.render('tasks/edit', { task: foundTask})
+        }
+    });
+})
 
 
-// //update tasks
-// router.put('/:id', function(req,res){
-//     Task.findByIdAndUpdate(req.params.id, req.body.task, function(err, updatedTask){
-//         if(err){
-//             res.redirect('/tasks');
-//         } else {
-//             res.redirect('/tasks');
-//         }
-//     })
-// })
+//update tasks
+router.put('/:id', function(req,res){
+    Task.findByIdAndUpdate(req.params.id, req.body, function(err, updatedTask){
+        if(err){
+            res.redirect('/tasks');
+        } else {
+            res.redirect('/tasks');
+        }
+    })
+})
 
-router.route('/:taskId')
-    .get(helpers.getTask)
-    .put(helpers.updateTask)
-    .delete(helpers.deleteTask);
-    
+//complete task
+router.put('/:id/complete', function(req,res){
+    Task.findByIdAndUpdate(req.params.id, {
+        completed : true
+    }, function(err){
+        if(err){
+            res.redirect('/tasks');
+            console.log(err);
+        } else {
+            User.findByIdAndUpdate(req.user.id, {
+                points : (User.currentPoints + Task.importance)
+            }, function(err){
+                if(err){
+                    res.redirect('/tasks');
+                    console.log(err);
+                } else {
+                    res.redirect('/tasks')
+                };
+                
+            })
+        }
+    })
+});
+
+
+//uncomplete task
+router.put('/:id/incomplete', function(req,res){
+    Task.findByIdAndUpdate(req.params.id, {
+        completed : false
+    }, function(err){
+        if(err){
+            res.redirect('/tasks');
+        } else {
+            User.findByIdAndUpdate(req.user.id, {
+                points : (User.currentPoints - Task.importance)
+            }, function(err){
+                if(err){
+                    res.redirect('/tasks');
+                    console.log(err);
+                } else {
+                    res.redirect('/tasks')
+                };
+                
+            })
+        }
+    })
+});
     
 module.exports = router;

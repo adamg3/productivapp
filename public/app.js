@@ -1,38 +1,35 @@
 /* global $ */
+/* global Chart */
 $(document).ready(function(){
     $('#newTaskButton').click(function(){
         $('#newTaskForm').toggle();
     });
-    
 });
 
 
-// function removeTask(task){
-//     var clickedId = task.data('id');
-//     var deleteUrl = '/tasks/' + clickedId;
-//     $.ajax({
-//         method: 'DELETE',
-//         url: deleteUrl
-//     })
-//     .then(function(data){
-//         task.remove();
-//     })
-//     .catch(function(err){
-//         console.log(err);
-//     })
-// }
-
-// function updatetask(task){
-//     var updateUrl = '/tasks/' + task.data('id');
-//     var isDone = !task.data('completed');
-//     var updateData = {completed: isDone}
-//     $.ajax({
-//       method: 'PUT',
-//       url: updateUrl,
-//       data: updateData
-//     })
-//     .then(function(updatedTask){
-//         task.toggleClass("done");
-//         task.data('completed', isDone)
-//     })
-// }
+function renderDoughnut(completedTasks, incompleteTasks){
+    var ctx = document.getElementById('tasksDonutChart').getContext('2d');
+    var config = {
+        type: "doughnut",
+        data: {
+            datasets: [{
+                data: [
+                    completedTasks,
+                    incompleteTasks
+                    ],
+                    backgroundColor: [
+                        "#F7464A",
+                        "#46BFBD"
+                    ],
+            }],
+            labels: [
+                "Complete Tasks",
+                "Incomplete Tasks"
+            ]
+        },
+        options: {
+            responsive: true
+        }
+    };
+    var myDonut = new Chart(ctx, config);
+};

@@ -28,17 +28,46 @@
         <h2 class="white centered helvetica bold">Your Tasks For Today:</h2>
     </div>
     <div class="white">
+        <div>
+            <h4 class="centered">
+                Total Tasks: <%=tasks.length%>
+            </h4>
+        </div>
         <ul class='list'>
-            <% tasks.forEach(function(task){ %>
+            <% 
+            var completedTasks = 0;
+            var pointsAchieved = 0;
+            tasks.forEach(function(task){
+            if (task.completed == true) {
+                completedTasks ++;
+                pointsAchieved = pointsAchieved + task.importance;
+            }
+            %>
                 <li class='task white'>
-                    <p class='<% if(task.completed) { task.addClass('done')}%>'><%=task.name%> <%=task.completionDate%> <%=task.importance%> <%=task.completed%></p>
-                    <div class='right'>
-                        <button class='btn btn-xs btn-success'>Complete</button>
-                        <button class='btn btn-xs btn-warning'>Edit</button>
-                        <button class='btn btn-xs btn-danger'>Delete</button>
+                    <div>
+                        <h5>Task: <%=task.name%></h5> 
+                        <h5>Due: <%=task.completionDate%></h5> 
+                        <h5>Importance: <%=task.importance%></h5> 
+                        <h5>Completed: <%=task.completed%></h5>
+                    </div>
+                    <div class='right taskButtons'>
+                        <% if (task.completed == true){ %>
+                        <form id="incomplete-form" action="/tasks/<%=task._id%>/incomplete?_method=PUT" method="POST">
+                            <button class='btn btn-xs btn-outline-success incomplete'>Incomplete</button>
+                            </form>
+                        <% } else { %>
+                        <form id="complete-form" action="/tasks/<%=task._id%>/complete?_method=PUT" method="POST">
+                            <button class='btn btn-xs btn-success complete'>Complete</button>
+                            </form>
+                            <a class='btn btn-xs btn-warning edit' href="/tasks/<%=task._id%>/edit">Edit</a>
+                            <form id="delete-form" action="/tasks/<%= task._id %>?_method=DELETE" method="POST">
+                                <button class='btn btn-xs btn-danger delete'>Delete</button>
+                            </form>
+                        <% }%>
                     </div>
                 </li>
             <% }); %>
+            <h5 class="centered">Tasks Completed Today: <%=completedTasks%> | Points Achieved Today: <%=pointsAchieved%></h5>
         </ul>
     </div>
     
