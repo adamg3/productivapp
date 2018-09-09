@@ -5,6 +5,10 @@
     font-family: 'Times New Roman';
 }
 
+.underlined {
+    text-decoration: underline;
+}
+
 h1 {
     text-align: center;
     line-height: 100px;
@@ -71,7 +75,7 @@ body {
 }
 
 .list {
-	width: 100%;
+	width: 768px;
 	margin: 0 auto;
 }
 
@@ -82,7 +86,6 @@ body {
 	font-size: 20px;
 	padding: 20px;
 	transition: all .3s ease;
-	/*border: 1px solid white;*/
 	border-radius: 20px;
 }
 
@@ -99,21 +102,33 @@ form {
 	cursor: pointer;
 }
 
-@media(min-width: 768px) {
+@media(max-width: 768px) {
     .list {
-        width: 768px;
+        width: 100%;
     }
-    .right {
-      margin-top: -78px;
-      float: right;
+
+    .task {
+        width: 100%;
     }
+    
+    body .right {
+        float: none;
+        margin-top: 0px;
+    }
+    
+    body .inputForm {
+        width: 85%;
+    }
+
     
     #performance {
         width: 768px;
     }
-    /*#currentPoints {*/
-    /*    margin-left: -10px;*/
-    /*}*/
+}
+
+.right {
+    margin-top: -78px;
+    float: right;
 }
 
 
@@ -149,11 +164,6 @@ form {
     font-weight: bold;
 }
 
-/*.landingFeature h4 {*/
-/*    vertical-align: middle;*/
-/*    line-height: normal;*/
-/*}*/
-
 #performance {
     border: 2px solid #343a40;
     border-radius: 10px;
@@ -182,3 +192,4 @@ form {
     border-radius: 10px;
     width: 90%;
 }
+

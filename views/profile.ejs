@@ -4,20 +4,34 @@
     var totalPoints = 0;
     var totalTasks = tasks.length;
     var availablePoints = 0;
+    var lowTasks = 0;
+    var midTasks = 0;
+    var highTasks = 0;
     tasks.forEach(function(task){
         if (task.completed == true) {
             completedTasks ++;
             totalPoints = totalPoints + task.importance;
         }
         availablePoints = availablePoints + task.importance;
+        if(task.importance !== 1){
+            if(task.importance == 2){
+                midTasks++;
+            } else {
+                highTasks++;
+            }
+        } else {
+            lowTasks++;
+        }
         });
 %>
 
     
     <script>
     window.onload = function(){
-        renderDoughnut(<%=completedTasks%>, (<%=totalTasks%> - <%=completedTasks%>))
-
+        renderTasksDoughnut(<%=completedTasks%>, (<%=totalTasks%> - <%=completedTasks%>))
+        renderPointsPie(<%=totalPoints%>, (<%=availablePoints%>- <%=totalPoints%>))
+        renderTasksBar(<%=lowTasks%>,<%=midTasks%>,<%=highTasks%>);
+        console.log(<%=lowTasks%>,<%=midTasks%>,<%=highTasks%>)
     }
 
     </script>
@@ -25,13 +39,13 @@
 <div class="container">
     <div class="jumbotron">
     <div class="row">
-        <div class="col-6 helvetica profileHeadingLeft">
-            <h2 class="white"><%=currentUser.username.toUpperCase()%></h2>
-            <h3 class="white">Track Your Performance Below</h3>
+        <div class="col-md-6 helvetica profileHeadingLeft white">
+            <h2><%=currentUser.username.toUpperCase()%></h2>
+            <h3>View Your Performance Below</h3>
         </div>
-        <div class="col-6 helvetica profileHeadingRight white">
+        <div class="col-md-6 helvetica profileHeadingRight white">
             <div class="row ">
-            <div class="col">
+            <div class="col underlined">
                 <h3>Total Points:</h3>
             </div>
             <div class="col">
@@ -40,7 +54,7 @@
             </div>
             <br>
             <div class="row">
-                <div class="col">
+                <div class="col underlined">
                     <h3>Total Tasks Completed:</h3>
                 </div>
                 <div class="col">
@@ -53,15 +67,29 @@
 </div>
 
 
-<div class="container middle" id="performance">
-    <h4 class="white">Performance Graphs</h4>
-    <div class="chart">
-        <canvas id="tasksDonutChart"></canvas>
+<div class="container middle white" id="performance">
+    <h4 class="white bold helvetica underlined">Performance Graphs</h4>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="chart charts">
+                <canvas id="tasksDonutChart"></canvas>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="chart charts">
+                <canvas id="tasksPieChart"></canvas>
+            </div>    
+        </div>
     </div>
+    <!--<div class="row">-->
+        <div class="chart charts">
+            <canvas id="tasksBarChart"></canvas>
+        </div>
+    <!--</div>-->
 </div>
 
 <div class="container middle" id="achievements">
-    <h4 class="white">This is where achievements list goes</h4>
+    <h4 class="white bold helvetica underlined">Achievements</h4>
 </div>
 
 <% include ./partials/footer %>
