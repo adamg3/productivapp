@@ -19,6 +19,10 @@ h1 {
     font-family: 'helvetica';
 }
 
+.navbar {
+    background-color: #5d5c61;
+}
+
 .bold {
     font-weight: bold;
 }
@@ -48,8 +52,27 @@ h1 {
     margin: 25px auto;
 }
 
+.inputForm .btn {
+    background-color: #5d5c61;
+    border-color: #5d5c61;
+}
+
+.inputForm .btn:hover {
+    background-color: #5d5c61;
+    border-color: #ffffff;
+}
+
+.inputForm a {
+    color: #5d5c61;
+}
+
+.inputForm a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
 body {
-    background-color: #1a1a1d;
+    background-color: #7395AE;
     margin-bottom: 50px;
     font-family: 'Montserrat', sans-serif;
 }
@@ -58,13 +81,13 @@ body {
     bottom: 0;
     position: fixed;
     width: 100%;
-    background-color: #343a40;
+    background-color: #5d5c61;
     height: 50px;
     line-height: 20px;
 }
 
 .middle {
-    background-color: #343a40;
+    background-color: #5d5c61;
     text-align: center;
     width: 100%;
     
@@ -138,7 +161,7 @@ form {
 
 .jumbotron {
     margin-top: 30px;
-    background-color: #343a40!important;
+    background-color:  #5d5c61!important;
 }
 
 .profileHeadingLeft {
@@ -153,10 +176,10 @@ form {
     height: 200px;
     /*width: 35%;*/
     border-radius: 10px;
-    border: 2px solid #343a40;
+    border: 2px solid  #5d5c61;
     margin-left: 20px;
     margin-bottom: 20px;
-    background-color: #343a40;
+    background-color:  #5d5c61;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -165,7 +188,7 @@ form {
 }
 
 #performance {
-    border: 2px solid #343a40;
+    border: 2px solid  #5d5c61;
     border-radius: 10px;
     width: 90%;
 }
@@ -187,7 +210,7 @@ form {
 }
 
 #achievements {
-    border: 2px solid #343a40;
+    border: 2px solid  #5d5c61;
     margin-top: 10px;
     border-radius: 10px;
     width: 90%;

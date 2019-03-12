@@ -47,7 +47,8 @@ router.post('/', function(req,res){
     //create task and add to db
     Task.create(newTask, function(err, newlyCreated){
         if(err){
-            console.log(err);
+            res.redirect('/tasks');
+            req.flash('error', 'The task is missing some information.')
         } else {
             res.redirect('/tasks');
         }

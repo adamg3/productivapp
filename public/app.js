@@ -30,9 +30,16 @@ function renderTasksDoughnut(completedTasks, incompleteTasks){
         options: {
             title: {
                 text : "Tasks complete vs incomplete",
-                display : true
+                display : true,
+                fontColor: "white"
+            },
+            legend: {
+                labels: {
+                    fontColor: "white"
+                }
             },
             responsive: true
+            
         }
     };
     var myDonut = new Chart(ctx, config);
@@ -61,8 +68,14 @@ function renderPointsPie(totalPoints, availablePoints){
         options: {
             title: {
                 text : "Points obtained vs Points missed",
-                display : true
+                display : true,
+                fontColor: "white"
             },
+            legend: {
+                labels: {
+                    fontColor: "white"
+                }
+            },            
             responsive: true
         }
     };
@@ -96,21 +109,29 @@ function renderTasksBar(low, med, high){
         options: {
             title: {
                 text : "Distribution of tasks by importance",
-                display : true
+                display : true,
+                fontColor: "white"
             },
             responsive: true,
             scales: {
                 xAxes: [{
                     ticks: {
                         maxRotation: 90,
-                        minRotation: 80
+                        minRotation: 80,
+                        fontColor: "white"
                     }
                 }],
                  yAxes: [{
                     ticks: {
-                    beginAtZero: true
+                        beginAtZero: true,
+                        fontColor: "white"
                     }
                 }]
+            },
+            legend: {
+                labels: {
+                    fontColor: "white"
+                }
             }
         }
     }

@@ -11,9 +11,4 @@ middlewareObj.isLoggedIn = function(req, res, next){
     res.redirect('/login');
 };
 
-
-// middlewareObj.checkOwnership = function(req, res, next){
-//     if()
-// }
-
 module.exports = middlewareObj;
